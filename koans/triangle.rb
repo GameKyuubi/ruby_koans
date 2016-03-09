@@ -15,6 +15,19 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
+  if (a * b * c == 0)
+    raise TriangleError, "Invalid triangle: 0-length side"
+  elsif (a < 0 || b < 0 || c < 0)
+    raise TriangleError, "Invalid triangle: negative side"
+  elsif (a + b <= c || b + c <= a || c + a <= b)
+    raise TriangleError, "Invalid triangle: inverted hypotenuse"
+  elsif (a == b && b == c)
+    return :equilateral
+  elsif (a == b || b == c || c == a)
+    return :isosceles
+  else
+    return :scalene
+  end
 end
 
 # Error class used in part 2.  No need to change this code.
